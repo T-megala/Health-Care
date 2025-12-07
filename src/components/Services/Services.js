@@ -13,9 +13,12 @@ import {
 } from "react-icons/fa";
 
 
+
+
+
 const Services = () => {
   return (
-    <section id="services" className="services-wrapper">
+    <section id="services" className="services-wrapper"    style={{ backgroundImage: "url('/doctor1.jpg')" }}>
 
       {/* HEADER */}
       <div className="services-hero" data-aos="fade-up">

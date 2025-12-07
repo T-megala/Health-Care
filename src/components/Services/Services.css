@@ -1,9 +1,33 @@
+/* ================================
+   SERVICES SECTION WRAPPER
+=================================== */
 .services-wrapper {
-  padding: 100px 25px;
-  background: linear-gradient(135deg, #f2f7ff, #ffffff);
+  padding: 110px 25px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
 }
 
-/* HERO SECTION */
+/* Soft white overlay */
+.services-wrapper::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(4px);
+  z-index: 0;
+}
+
+.services-wrapper > * {
+  position: relative;
+  z-index: 2;
+}
+
+
+/* ================================
+      HERO SECTION
+=================================== */
 .services-hero {
   text-align: center;
   max-width: 740px;
@@ -14,7 +38,6 @@
 .services-badge {
   color: #0078ff;
   font-weight: 600;
-  letter-spacing: 1px;
   margin-bottom: 10px;
 }
 
@@ -35,28 +58,29 @@
 }
 
 
-/* HORIZONTAL SCROLL */
+/* ================================
+      REAL FIX — AUTO GRID
+=================================== */
 .scroll-container {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: 25px;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  padding-bottom: 30px;
+  width: 100%;
+  overflow: visible !important;
 }
 
-.scroll-container::-webkit-scrollbar {
-  display: none;
-}
 
+/* ================================
+      SERVICE CARD
+=================================== */
 .service-scroll-card {
-  min-width: 300px;
   background: rgba(255, 255, 255, 0.75);
   backdrop-filter: blur(12px);
   border-radius: 20px;
   padding: 25px;
   box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-  scroll-snap-align: start;
-  transition: 0.35s;
+  transition: 0.30s ease;
+  height: 100%;
 }
 
 .service-scroll-card:hover {
@@ -64,7 +88,6 @@
   box-shadow: 0 20px 35px rgba(0,0,0,0.18);
 }
 
-/* GLOW ICON */
 .scroll-icon {
   font-size: 32px;
   color: #0078ff;
@@ -75,7 +98,9 @@
 }
 
 
-/* CTA */
+/* ================================
+      CTA BUTTON
+=================================== */
 .services-cta {
   text-align: center;
   margin-top: 50px;
@@ -90,7 +115,7 @@
   font-size: 17px;
   font-weight: 600;
   cursor: pointer;
-  transition: 0.3s;
+  transition: 0.3s ease;
 }
 
 .cta-btn:hover {
@@ -99,13 +124,38 @@
 }
 
 
-/* MOBILE */
+/* ================================
+      MOBILE RESPONSIVE
+=================================== */
 @media (max-width: 768px) {
   .services-main-title {
     font-size: 28px;
   }
 
-  .service-scroll-card {
-    min-width: 260px;
+  .scroll-icon {
+    font-size: 40px;
+    padding: 12px;
   }
+}
+
+
+.scroll-icon {
+  font-size: 63px;       /* bigger icon */
+  color: #0078ff;
+  margin-bottom: 18px;
+  
+  background: #e0edff;
+  padding: 18px;         /* perfect spacing */
+  border-radius: 20px;   /* nicer shape */
+  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  transition: transform 0.3s ease;
+}
+
+.service-scroll-card:hover .scroll-icon {
+  transform: scale(1.12);
 }
