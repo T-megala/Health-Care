@@ -1,0 +1,111 @@
+.docs-wrapper {
+  padding: 120px 40px;
+  background: linear-gradient(135deg, #eef6ff, #ffffff);
+}
+
+.docs-header {
+  text-align: center;
+  max-width: 750px;
+  margin: auto;
+  margin-bottom: 70px;
+}
+
+.docs-badge {
+  color: #007bff;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+.docs-title {
+  font-size: 38px;
+  font-weight: 800;
+  margin-top: 10px;
+}
+
+.docs-sub {
+  color: #555;
+  margin-top: 12px;
+  font-size: 17px;
+  line-height: 1.6;
+}
+
+/* GRID */
+.docs-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 35px;
+}
+
+/* CARD */
+.doc-card {
+  background: rgba(255, 255, 255, 0.65);
+  backdrop-filter: blur(12px);
+  padding: 28px;
+  border-radius: 20px;
+  text-align: center;
+  cursor: pointer;
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+.doc-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 45px rgba(0,0,0,0.15);
+}
+
+/* ICON */
+.doc-icon-wrap {
+  background: #e6f2ff;
+  width: 80px;
+  height: 80px;
+  border-radius: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+  margin-bottom: 20px;
+  transition: 0.3s;
+}
+
+.doc-card:hover .doc-icon-wrap {
+  background: #d8eaff;
+}
+
+.doc-icon {
+  font-size: 42px;
+  color: #007bff;
+}
+
+.pdf {
+  color: #ff4040; /* red for pdf */
+}
+
+.doc-name {
+  font-size: 19px;
+  font-weight: 600;
+  margin-bottom: 15px;
+}
+
+/* BUTTON */
+.doc-btn {
+  background: #007bff;
+  color: #fff;
+  border: none;
+  padding: 10px 22px;
+  border-radius: 25px;
+  font-size: 14px;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+.doc-btn:hover {
+  background: #005fcc;
+  transform: scale(1.05);
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+  .docs-title {
+    font-size: 28px;
+  }
+}
