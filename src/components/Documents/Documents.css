@@ -1,8 +1,10 @@
+/* SECTION */
 .docs-wrapper {
   padding: 120px 40px;
   background: linear-gradient(135deg, #eef6ff, #ffffff);
 }
 
+/* HEADER */
 .docs-header {
   text-align: center;
   max-width: 750px;
@@ -32,28 +34,63 @@
 /* GRID */
 .docs-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 35px;
+  justify-items: center;
+  max-width: 1200px;
+  margin: auto;
 }
 
-/* CARD */
+/* CARD WRAPPER */
 .doc-card {
-  background: rgba(255, 255, 255, 0.65);
-  backdrop-filter: blur(12px);
-  padding: 28px;
-  border-radius: 20px;
-  text-align: center;
-  cursor: pointer;
-  transition: transform 0.35s ease, box-shadow 0.35s ease;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+  perspective: 1200px;
+  width: 100%;
+  max-width: 280px;
+  transition: transform 0.4s ease;
 }
 
 .doc-card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 20px 45px rgba(0,0,0,0.15);
+  transform: translateY(-8px) rotateX(2deg) rotateY(2deg); /* subtle tilt */
 }
 
-/* ICON */
+/* INNER FLIP ELEMENT */
+.doc-card-inner {
+  position: relative;
+  width: 100%;
+  height: 280px;
+  border-radius: 20px;
+  transform-style: preserve-3d;
+  transition: transform 0.7s ease, box-shadow 0.4s;
+}
+
+.doc-card:hover .doc-card-inner {
+  transform: rotateY(180deg) translateY(-5px) scale(1.02);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.25);
+}
+
+/* FRONT AND BACK SIDES */
+.doc-front,
+.doc-back {
+  position: absolute;
+  inset: 0;
+  border-radius: 20px;
+  backface-visibility: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 20px;
+  transition: all 0.4s ease;
+}
+
+/* FRONT SIDE */
+.doc-front {
+  background: rgba(255, 255, 255, 0.65);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
 .doc-icon-wrap {
   background: #e6f2ff;
   width: 80px;
@@ -62,7 +99,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: auto;
   margin-bottom: 20px;
   transition: 0.3s;
 }
@@ -73,39 +109,83 @@
 
 .doc-icon {
   font-size: 42px;
-  color: #007bff;
 }
 
 .pdf {
-  color: #ff4040; /* red for pdf */
+  color: #ff4040;
 }
 
 .doc-name {
   font-size: 19px;
   font-weight: 600;
+}
+
+/* BACK SIDE */
+.doc-back {
+  transform: rotateY(180deg);
+  background: linear-gradient(135deg, #6186e4, #5aa8e0, rgb(193, 211, 231));
+  color: #fff;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+  border: 1px solid rgba(255,255,255,0.2);
+  transition: all 0.5s ease;
+}
+
+.doc-back h3 {
+  font-size: 20px;
   margin-bottom: 15px;
 }
 
-/* BUTTON */
-.doc-btn {
-  background: #007bff;
+/* VIEW BUTTON */
+.doc-back .doc-btn {
+  background: rgba(255,255,255,0.2);
   color: #fff;
-  border: none;
   padding: 10px 22px;
   border-radius: 25px;
   font-size: 14px;
   font-weight: 600;
-  transition: 0.3s;
+  cursor: pointer;
+  transition: all 0.3s ease;
 }
 
-.doc-btn:hover {
-  background: #005fcc;
-  transform: scale(1.05);
+.doc-back .doc-btn:hover {
+  background: rgba(255,255,255,0.35);
+  transform: translateY(-3px) scale(1.05);
 }
 
 /* MOBILE */
+@media (max-width: 1024px) {
+  .docs-grid {
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  }
+}
+
 @media (max-width: 768px) {
   .docs-title {
     font-size: 28px;
+  }
+
+  .docs-grid {
+    grid-template-columns: 1fr; /* single column full width */
+  }
+
+  .doc-card-inner {
+    height: 240px;
+  }
+
+  .doc-icon {
+    font-size: 36px;
+  }
+
+  .doc-name {
+    font-size: 17px;
+  }
+
+  .doc-back h3 {
+    font-size: 18px;
+  }
+
+  .doc-back .doc-btn {
+    padding: 8px 16px;
+    font-size: 14px;
   }
 }

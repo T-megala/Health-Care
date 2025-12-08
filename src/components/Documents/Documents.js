@@ -6,23 +6,23 @@ const documents = [
   {
     title: "Memorandum of Association (MOA)",
     file: "/MOA.pdf",
-    type: "pdf"
+    type: "pdf",
   },
   {
     title: "Bylaws & Governance Policy",
-    file: "/bylaws.pdf",
-    type: "pdf"
+    file: "/IncorporationCertificate.pdf",
+    type: "pdf",
   },
   {
     title: "SPC Care Foundation Registration Certificate",
     file: "/registration.pdf",
-    type: "pdf"
+    type: "pdf",
   },
   {
     title: "Annual Health Impact Report",
     file: "/impact2024.pdf",
-    type: "pdf"
-  }
+    type: "pdf",
+  },
 ];
 
 const Documents = () => {
@@ -38,22 +38,32 @@ const Documents = () => {
 
       <div className="docs-grid">
         {documents.map((doc, index) => (
-          <div
-            className="doc-card"
-            key={index}
-            onClick={() => window.open(doc.file, "_blank")}
-          >
-            <div className="doc-icon-wrap">
-              {doc.type === "pdf" ? (
-                <FaFilePdf className="doc-icon pdf" />
-              ) : (
-                <FaFileAlt className="doc-icon" />
-              )}
+          <div className="doc-card" key={index}>
+            <div className="doc-card-inner">
+              {/* FRONT SIDE */}
+              <div className="doc-front">
+                <div className="doc-icon-wrap">
+                  {doc.type === "pdf" ? (
+                    <FaFilePdf className="doc-icon pdf" />
+                  ) : (
+                    <FaFileAlt className="doc-icon" />
+                  )}
+                </div>
+                <h3 className="doc-name">{doc.title}</h3>
+              </div>
+
+              {/* BACK SIDE */}
+              <div className="doc-back">
+                <h3>{doc.title}</h3>
+                <span
+                  className="doc-btn"
+                    onClick={() => window.open(process.env.PUBLIC_URL + doc.file, "_blank")}
+                  style={{ cursor: "pointer" }}
+                >
+                  View Document
+                </span>
+              </div>
             </div>
-
-            <h3 className="doc-name">{doc.title}</h3>
-
-            <button className="doc-btn">View Document</button>
           </div>
         ))}
       </div>
